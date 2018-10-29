@@ -1,0 +1,21 @@
+{
+  "name": "gettopnews",
+  "version": "1.0.0",
+  "description": "The command line utility tool to get top news",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "gettopnews": "index.js"
+  },
+  "author": "fr34kypie",
+  "license": "MIT",
+  "dependencies": {
+    "cache-manager": "^2.9.0",
+    "cache-manager-fs": "^1.0.6",
+    "optimist": "^0.6.1",
+    "request": "^2.88.0",
+    "valid-url": "^1.0.9"
+  }
+}
