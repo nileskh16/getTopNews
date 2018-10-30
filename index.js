@@ -28,13 +28,15 @@ const app = {
         let self = this;
         if (!ifShowHelp && !numOfPosts) {
             self.showHelp();
-            return;
+            return false;
         }
         else if (ifShowHelp) self.showHelp();
         if (numOfPosts === undefined || numOfPosts === null) {
-            console.log('Provide count of posts with --posts option')
+            console.log('Provide count of posts with --posts option');
+            return false;
         } else if (isNaN(numOfPosts) || typeof numOfPosts !== 'number') {
             console.log('Count of posts should be a valid number.');
+            return false;
         } else if (numOfPosts && numOfPosts <= maxPosts && numOfPosts > 0) {
             self.initRequest(topPostsUrl);
         } else {
@@ -42,6 +44,7 @@ const app = {
                 console.log(`Count of posts cannot be zero`);
             } else if (numOfPosts > maxPosts)
                 console.log(`${numOfPosts} count of posts cannot exceed ${maxPosts}.`);
+            return false;
         }
     },
     showHelp: function () {
