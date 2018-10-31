@@ -15,33 +15,36 @@ describe('All test cases for app to work fine', () => {
         expect(result, "Number of posts should not exceed limit").equal(false);
     });
 
-    it("initRequest() should return valid response", () => {
-        request.get(appPostUrl, (err, resp, body) => {
+    it("initRequest() should return valid response", (done) => {
+        request.get(appPostUrl, function (err, resp, body) {
             expect(resp.statusCode, 'Status code should be 200').equal(200);
-            resp.should.be.json;
+            //expect(resp).to.be.json;
             const jsonResult = JSON.parse(body);
             jsonResult.should.be.a('array', 'Response should include list of ids');
+            done();
         });
     });
 
-    it("Init request should fail for wrong url", () => {
+    it("Init request should fail for wrong url", (done) => {
         request.get('we are having fun', (err, resp, body) => {
             //expect(err).to.be.not.null;
             should.exist(err);
+            done();
         });
     });
 
-    it("handleRequest() should handle all promises", () => {
+    it("handleRequest() should handle all promises", (done) => {
         app.handleRequest('[1000, 1243, 2233, 4567, 4312]').then((result) => {
             //result.should.be.an('array', 'Promise should return object');
             expect(result, "Promise should return object").to.be.an('array');
+            done();
         });
     });
 
-    it("Post should be valid json", () => {
+    it("Post should be valid json", (done) => {
         request.get(getPostByIdUrl.replace('**id**', 8863), (err, resp, body) => {
             assert.equal(resp.statusCode, 200, "Status code should be 200");
-            resp.should.be.json;
+            //expect(resp).to.be.json;
             const singlePost = JSON.parse(body),
             isValidResult = app.isValid(singlePost);
             isValidResult.should.be.a('boolean');
@@ -50,6 +53,7 @@ describe('All test cases for app to work fine', () => {
             expect(singlePost, "kids property check").to.have.property('kids');
             expect(singlePost, "url property check").to.have.property('url');
             expect(singlePost, "author property check").to.have.property('by');
+            done();
         });
     });
 

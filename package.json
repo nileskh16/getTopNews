@@ -1,6 +1,6 @@
 {
   "name": "gettopnews",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The command line utility tool to get top news",
   "main": "index.js",
   "scripts": {
@@ -9,7 +9,22 @@
   "bin": {
     "gettopnews": "index.js"
   },
-  "author": "fr34kypie",
+  "author": "nileskh2504 <nileshfbk123@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nileskh16/getTopNews.git"
+  },
+  "homepage": "https://github.com/nileskh16/getTopNews",
+  "bugs": {
+    "url": "https://github.com/nileskh16/getTopNews/issues"
+  },
+  "keywords": [
+    "top news",
+    "node js",
+    "hackernews",
+    "command line tool",
+    "get top news"
+  ],
   "license": "MIT",
   "dependencies": {
     "cache-manager": "^2.9.0",
